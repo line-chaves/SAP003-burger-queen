@@ -1,13 +1,10 @@
 import React from 'react';
 
-const Button = (props) =>{
+const Button = (props) => {
     return (
-        <button
-        data-id={props.id}
-        class = {props.class}>
-        {props.title}
-        </button>
-    )
+        <button value={props.state} id={props.id} onClick={props.handleClick} className="button">
+        {props.text}</button>
+ );
 }
 
 export default Button;

@@ -1,10 +1,17 @@
 import React from 'react';
 
-const Input = (props) =>{    
-    return (
-        <input class={props.class}>
-        </input>
-    );
+function Input(props) {
+  return (
+      <input
+        label = {props.label}
+        id = {props.id}
+        className = {props.class}
+        type= {props.type}
+        value={props.value}
+        onChange={props.handleChange}
+        placeholder={props.holder}
+      />
+  )
 }
-
-export default Input;
+  
+  export default Input;

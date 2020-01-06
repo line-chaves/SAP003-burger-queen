@@ -1,17 +1,28 @@
 import React from 'react';
 import './App.css';
 import Restaurant from './pages/salao.js'
-// import {
-//   BrowserRouter as Router,
-//   Switch,
-//   Link
-// } from 'react-router-dom'
+import GetOrder from './pages/cozinha';
+import Nav from './componentes/nav.js'
+import {
+  BrowserRouter as Router,
+  Switch
+} from 'react-router-dom'
 
 function App() {
   return(
-   <div>
-     <Restaurant></Restaurant>
-   </div>
+      <Router>
+        <Nav/>
+       <div>
+        <Switch>
+           <Router path="/salao">
+           <Restaurant />
+           </Router>
+           <Router path="/cozinha">
+             <GetOrder />
+           </Router>
+         </Switch>
+       </div>
+     </Router>
     );
 };
 
