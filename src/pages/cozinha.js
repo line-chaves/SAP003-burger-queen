@@ -14,7 +14,7 @@ function GetOrder (){
             setPedidos(newPedidos)
         })
     },[]);
-
+    
     return (
         <div className = 'style-order'>
           {pedidos.map((i,index)=>{
@@ -22,10 +22,11 @@ function GetOrder (){
               <ol>Nome: {i.nomeCliente}</ol>
               <ol>Mesa: {i.mesaCliente}</ol>
               <ol>Pedidos:{i.produtos.map((i)=>i.Item).join(', -')}</ol>
-              <ol>Horário do Pedido:{i.time}</ol>
+              <ol>Horário do Pedido:<p>{i.time}</p></ol>
             </div>)
           })}
       </div>
+    
     );
 };
 

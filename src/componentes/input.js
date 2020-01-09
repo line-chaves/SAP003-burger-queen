@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 function Input(props) {
   return (
       <input
@@ -10,6 +11,7 @@ function Input(props) {
         value={props.value}
         onChange={props.handleChange}
         placeholder={props.holder}
+        checked={props.checked}
       />
   )
 }

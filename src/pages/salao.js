@@ -6,7 +6,6 @@ import firebase from '../utils.js/config'
 import { StyleSheet, css } from "aphrodite";
 import firestore from '../utils.js/config';
 
-
 function Restaurante() {
 
   const [item1, setItem1] = useState([]);
@@ -33,11 +32,28 @@ function Restaurante() {
     })
   }, [])
 
-  const addOrder = (item) => {
-    setProductSelect([...productSelect, item])
-  }
+  const counter = (item, action)=>{
+    const existProduct = productSelect.includes(item);
+    const valorContador = item.contador
+    console.log(item.contador)
 
-  const total = productSelect.reduce((acc, item) => acc + item.Valor, 0);
+    if(action === 'cresc') { 
+      if(existProduct){
+      item.contador ++
+      setProductSelect([...productSelect])
+    }}
+      if(action === 'desc'){
+        if(valorContador > 0){
+          item.contador --
+          setProductSelect([...productSelect])
+        }
+        else{
+          remove(item);
+        }
+      }
+  }
+  
+  const total = productSelect.reduce((acc, item) => acc + (item.Valor * item.contador), 0);
 
   const remove = (item) => {
     const index = (productSelect.indexOf(item));
@@ -49,47 +65,58 @@ function Restaurante() {
     const produtos = productSelect;
     const nomeCliente = document.querySelector('#nome').value;
     const mesaCliente = document.querySelector('#mesa').value;
-    const time = new Date().toLocaleString('pt-BR')
-    
+    const time = new Date().toLocaleString('pt-BR');
+
     const order = {
       nomeCliente : nomeCliente,
       mesaCliente : mesaCliente,
       produtos : produtos,
       total : total,
       time:time,
+  
     };
 
-    firestore.collection("pedidos").doc().set(order).then(function() {
-      alert("Pedido Enviado para Cozinha!");
+    firestore.collection("pedidos").doc().set(order).then(() => {
+      alert("Pedido enviado para a Cozinha!");
   });
   }
+  const addOrder = (item) => {
+    setProductSelect([...productSelect, {...item, contador: 1}])
+  }
   return (
-    <div className="App" StyleSheet={style}>
+    <div className='principal' >
       <header className="App-header">
-      <div>
+      </header>
+      <main>
+      <section>
       <h2 className="menu">Menu</h2>
       <Button className="menu" text={'Breakfast'} handleClick={() => setFilterMenu('breakfast') } />
       <Button className="menu" text={'All Day'} handleClick={() => setFilterMenu('lunch') } />
-      </div>
-    
-      <div>
-        <div>
         <Menu 
-          menuItens={filterMenu === "breakfast" ? item1 : item2} 
-          handleClick={addOrder} 
-          name={productSelect.Item} 
-          price={productSelect.Valor} key={productSelect.id}/>
-        </div>
+          menuItens={filterMenu === "breakfast" ? item1 : item2}
+          handleClick={addOrder}
+          Opcao= {productSelect.opcao? (productSelect.map(i => <p>{i.opcao}</p>)) : null}
+          name={productSelect.Item}
+          price={productSelect.Valor} key={productSelect.id}
+         />
+        </section>
         
-        <div>
-         <div>
+        <section>
           <Input className ="dados-cliente"  type ='text' id ='nome' placeholder="Nome do cliente" label='Nome do cliente:'/>
           <Input className ="dados-cliente" type ='number' id = 'mesa' placeholder="Nome do cliente" label='Número da mesa:'/>
-         </div>
           {productSelect.map((product, index) => (
-              <div key={index}> 
-                {product.Item} R$ {product.Valor},00 
-                <Button text={'X'} handleClick={(event) => {
+              <div key={index}>
+                <Button text={'+'} handleClick={(event) => {
+                  event.preventDefault(); 
+                  counter(product , 'cresc');
+                }} />
+                Quant: {product.contador}
+                <Button text={'-'} handleClick={(event) => {
+                  event.preventDefault(); 
+                  counter(product , 'desc');
+                }} />
+                 {product.Item} R$ {product.Valor*product.contador},00 
+                <Button text={'Del'} handleClick={(event) => {
                   event.preventDefault(); 
                   remove(product);
                 }} />
@@ -101,16 +128,15 @@ function Restaurante() {
             event.preventDefault();
             sendOrderProduct();
           }}></Button></p>
-        </div>
-      </div>
-      </header>
+      </section>
+      </main>
     </div>
   );
 } 
 
-const style = StyleSheet.create({
-  div: {
-      backgroundColor:'red',
-  }
-});
+// const styles = StyleSheet.create({
+//   div: {
+//       backgroundColor:' background-color:#FFCF8A;',
+//   }
+// });
 export default Restaurante;
