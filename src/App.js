@@ -1,12 +1,13 @@
 import React from 'react';
 import './App.css';
-import Restaurant from './pages/salao.js'
+import Restaurant from './pages/salao.js';
 import GetOrder from './pages/cozinha';
-import Nav from './componentes/nav.js'
+import Nav from './componentes/nav.js';
 import {
   BrowserRouter as Router,
   Switch
-} from 'react-router-dom'
+} from 'react-router-dom';
+import { StyleSheet, css } from "aphrodite";
 
 function App() {
   return(
@@ -25,5 +26,11 @@ function App() {
      </Router>
     );
 };
+
+const styles = StyleSheet.create({
+  nav: {
+      backgroundColor:'#FF9900',
+  }
+});
 
 export default App;

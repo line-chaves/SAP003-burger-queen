@@ -1,8 +1,31 @@
 * {
   margin : 0 ;
   padding : 0 ;
-  box-sizing : border-box;
+  /* box-sizing : border-box; */
   
+}
+#root {
+  background-color: #400101;
+}
+a{
+  color:#75542C;
+  text-decoration: none;
+  font-family: 'Ibarra Real Nova', serif;
+}
+.menu{
+  font-family: 'Ibarra Real Nova', serif;
+  color: #731702;
+}
+.btnBreakAllDay{
+  font-family: 'Indie Flower', cursive;
+}
+.style-order {
+	margin: 40px auto;
+	padding: 20px;
+	max-width: 260px;
+	border: 6px solid #472478;
+	background: #84e;
+	box-shadow: 10px 10px 20px 0px rgba(0,0,0,.35);
 }
 
 /* @media (min-width: 768px) and (max-width: 1024px) {
@@ -10,7 +33,7 @@
 display: flex;
 } 
 } */
-@media only screen and (min-width: 401px) and (max-width: 1024px) {
+/* @media only screen and (min-width: 401px) and (max-width: 1024px) {
   .principal{
     display: flex;
   }
@@ -20,4 +43,4 @@ display: flex;
   .btn-menu{
     flex-flow: column-nowrap;
   }
-}
+} */

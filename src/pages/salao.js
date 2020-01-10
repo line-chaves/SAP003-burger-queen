@@ -12,6 +12,9 @@ function Restaurante() {
   const [item2, setItem2] = useState([]);
   const [productSelect, setProductSelect] = useState([]);
   const [filterMenu, setFilterMenu] = useState("breakfast");
+  // const [item3, setItem3] = useState([]);
+  // const [item4, setItem4] = useState([]);
+  // const [item5, setItem5] = useState([]);
 
   useEffect(() => {
 
@@ -84,23 +87,25 @@ function Restaurante() {
     setProductSelect([...productSelect, {...item, contador: 1}])
   }
   return (
-    <div className='principal' >
-      <header className="App-header">
+    <div className={css(styles.container)}>
+      <header className={css(styles.logo)}>
+      <img className={css(styles.img)} src={require("../componentes/img/BurgerQueen.png")}/>
       </header>
       <main>
       <section>
-      <h2 className="menu">Menu</h2>
-      <Button className="menu" text={'Breakfast'} handleClick={() => setFilterMenu('breakfast') } />
-      <Button className="menu" text={'All Day'} handleClick={() => setFilterMenu('lunch') } />
-        <Menu 
-          menuItens={filterMenu === "breakfast" ? item1 : item2}
-          handleClick={addOrder}
-          Opcao= {productSelect.opcao? (productSelect.map(i => <p>{i.opcao}</p>)) : null}
-          name={productSelect.Item}
-          price={productSelect.Valor} key={productSelect.id}
-         />
-        </section>
-        
+            <Button className={css(styles.btnBreakAllDay)} class='btnBreakAllDay' text={'Café da Manhã'} handleClick={() => setFilterMenu('breakfast') } />
+            <Button className={css(styles.btnBreakAllDay)} text={'Lanches'}handleClick={() => setFilterMenu('lunch') } />
+            <h2 className="menu">Menu</h2>
+      </section>
+      <section className={css(styles.menu)}>
+      <Menu 
+              menuItens={filterMenu === "breakfast" ? item1 : item2}
+              handleClick={addOrder}
+              Opcao= {productSelect.opcao? (productSelect.map(i => <p>{i.opcao}</p>)) : null}
+              name={productSelect.Item}
+              price={productSelect.Valor} key={productSelect.id}
+            />
+      </section>  
         <section>
           <Input className ="dados-cliente"  type ='text' id ='nome' placeholder="Nome do cliente" label='Nome do cliente:'/>
           <Input className ="dados-cliente" type ='number' id = 'mesa' placeholder="Nome do cliente" label='Número da mesa:'/>
@@ -134,9 +139,40 @@ function Restaurante() {
   );
 } 
 
-// const styles = StyleSheet.create({
-//   div: {
-//       backgroundColor:' background-color:#FFCF8A;',
-//   }
-// });
+const styles = StyleSheet.create({
+  container: {
+      display:'flex',
+      flexDirection:'column',
+      justifyContent:'space-around',
+      alignItems:'center',
+      backgroundColor:'#ffffff',
+  },
+  //Container btn
+  menu:{
+      display:'flex',
+      flexWrap:'wrap',
+      flexDirection: 'row',
+      width:'33rem',
+      flexdirection:'row',
+      justifycontent:'space-between',
+      backgroundColor:'inherit'
+  },
+  logo:{
+    justifyContent:'center',
+    alignItems:'center',
+    width:'100%',
+    display:'flex'
+  },
+  img:{
+    width:'30%',
+  },
+  btnBreakAllDay:{
+  borderRadius:'50%',
+  fontSize:'15px',
+  width:'50%',
+  height:'50px',
+  backgroundColor:'#75542C',
+  color:'#1F0C17'
+  }
+});
 export default Restaurante;
