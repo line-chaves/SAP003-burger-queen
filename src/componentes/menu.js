@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, css } from "aphrodite";
-import Input from '../componentes/input.js';
 
 const Menu = (props) => {
     return (

@@ -12,9 +12,6 @@ function Restaurante() {
   const [item2, setItem2] = useState([]);
   const [productSelect, setProductSelect] = useState([]);
   const [filterMenu, setFilterMenu] = useState("breakfast");
-  // const [item3, setItem3] = useState([]);
-  // const [item4, setItem4] = useState([]);
-  // const [item5, setItem5] = useState([]);
 
   useEffect(() => {
 
@@ -70,11 +67,10 @@ function Restaurante() {
     const nomeCliente = document.querySelector('#nome').value;
     const mesaCliente = document.querySelector('#mesa').value;
     const time = new Date().toLocaleString('pt-BR');
-    const contador = item.contador + 1;
+
     const order = {
       nomeCliente: nomeCliente,
       mesaCliente: mesaCliente,
-      quant: contador,
       produtos: produtos,
       total: total,
       time: time,
@@ -83,6 +79,9 @@ function Restaurante() {
 
     firestore.collection("pedidos").doc().set(order).then(() => {
       alert("Pedido enviado para a Cozinha!");
+      document.querySelector('#nome').value = null;
+      document.querySelector('#mesa').value = null;
+      setProductSelect([]);
     });
   }
   const addOrder = (item) => {
@@ -109,8 +108,8 @@ function Restaurante() {
           />
         </section>
         <section>
-          <Input className="dados-cliente" type='text' id='nome' placeholder="Nome do cliente" label='Nome do cliente:' />
-          <Input className="dados-cliente" type='number' id='mesa' placeholder="Nome do cliente" label='Número da mesa:' />
+          <Input className="dados-cliente" type='text' id='nome' placeholder='Nome do cliente' />
+          <Input className="dados-cliente" type='number' id='mesa' placeholder='Número da mesa' />
           {productSelect.map((product, index) => (
             <div key={index}>
               <Button text={'+'} handleClick={(event) => {
@@ -156,7 +155,8 @@ const styles = StyleSheet.create({
     width: '33rem',
     flexdirection: 'row',
     justifycontent: 'space-between',
-    backgroundColor: 'inherit'
+    backgroundColor: 'inherit',
+    margin: '2%'
   },
   logo: {
     justifyContent: 'center',
