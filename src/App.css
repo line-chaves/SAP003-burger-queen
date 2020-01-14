@@ -1,8 +1,6 @@
 * {
   margin : 0 ;
   padding : 0 ;
-  /* box-sizing : border-box; */
-  
 }
 #root {
   background-color: #400101;
@@ -15,6 +13,8 @@ a{
 .menu{
   font-family: 'Ibarra Real Nova', serif;
   color: #731702;
+  margin:5%;
+  align-items: center;
 }
 .btnBreakAllDay{
   font-family: 'Indie Flower', cursive;

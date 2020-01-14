@@ -8,8 +8,7 @@ const Menu = (props) => {
             {props.menuItens.map((menu) =>
             <button className={css(styles.botao)} key={menu.id} onClick={() => props.handleClick(menu)}>
                    <p>{menu.Item}</p>
-                   {/* <p>{menu.opcao}</p> */}
-                   <p>R$ {menu.Valor},00</p>
+                   <p className={css(styles.marginMenu)}>R$ {menu.Valor},00</p>
             </button>  
             )}
         </>
@@ -24,6 +23,9 @@ const styles = StyleSheet.create({
         display: 'flex',
         alignitems: 'center',
         justifycontent: 'space-around',
+    },
+    marginMenu:{
+        margin:'1%',
     }
   });
 

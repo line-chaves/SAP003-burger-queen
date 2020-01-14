@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import { StyleSheet, css } from "aphrodite";
 
-function Nav () {
+function Nav() {
   return (
     <nav className={css(styles.nav)}>
       <ul>
@@ -17,10 +17,11 @@ function Nav () {
 
   );
 };
+
 const styles = StyleSheet.create({
-  nav:{
-    display:'flex',
-    color:'#ffffff'
+  nav: {
+    display: 'flex',
+    color: '#ffffff'
   }
 });
 
