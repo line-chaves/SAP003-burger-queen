@@ -112,17 +112,17 @@ function Restaurante() {
           <Input className="dados-cliente" type='number' id='mesa' placeholder='Número da mesa' />
           {productSelect.map((product, index) => (
             <div key={index}>
-              <Button text={'+'} handleClick={(event) => {
+              <Button className={css(styles.btnItemSelect)} text={'➕'} handleClick={(event) => {
                 event.preventDefault();
                 counter(product, 'cresc');
               }} />
               Quant: {product.contador}
-              <Button text={'-'} handleClick={(event) => {
+              <Button className={css(styles.btnItemSelect)} text={'➖'} handleClick={(event) => {
                 event.preventDefault();
                 counter(product, 'desc');
               }} />
               {product.Item} R$ {product.Valor * product.contador},00
-                <Button text={'Del'} handleClick={(event) => {
+                <Button className={css(styles.btnItemSelect)} text={'❌'} handleClick={(event) => {
                 event.preventDefault();
                 remove(product);
               }} />
@@ -174,6 +174,11 @@ const styles = StyleSheet.create({
     height: '50px',
     backgroundColor: '#75542C',
     color: '#1F0C17'
+  },
+  btnItemSelect:{
+    width:'28px',
+    height:'28px',
+    alignItems:'center'
   }
 });
 export default Restaurante;

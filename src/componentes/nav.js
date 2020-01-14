@@ -7,10 +7,10 @@ function Nav() {
     <nav className={css(styles.nav)}>
       <ul>
         <li>
-          <Link to="/salao"><strong>Salão</strong></Link>
+          <Link to="/salao"><h3>Salão</h3></Link>
         </li>
         <li>
-          <Link to="/cozinha"><strong>Cozinha</strong></Link>
+          <Link to="/cozinha"><h3>Cozinha</h3></Link>
         </li>
       </ul>
     </nav>

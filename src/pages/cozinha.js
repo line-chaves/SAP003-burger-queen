@@ -27,7 +27,7 @@ function GetOrder() {
                   <p>Mesa: {i.mesaCliente}</p>
                 </div>
                 <div>
-                  <p>Pedidos:<br/>{i.produtos.map((i) => i.Item).join(', -')}</p>
+                  <p>Pedidos:<br/>{i.produtos.map((i) => i.Item).join(',  ')}</p>
                 </div>
                 <div>
                   <p>Horário do Pedido:{i.time}</p>

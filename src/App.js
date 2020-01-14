@@ -17,7 +17,10 @@ function App() {
           <Restaurant />
         </Router>
         <Router path="/cozinha">
-          <GetOrder />
+          <GetOrder/>
+        </Router>
+        <Router path="/">
+          <Restaurant/>
         </Router>
       </Switch>
     </Router>
