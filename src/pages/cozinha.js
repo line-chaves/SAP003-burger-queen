@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import firebase from '../utils.js/config';
 import { StyleSheet, css } from "aphrodite";
+import Button from '../componentes/button'
+import firestore from '../utils.js/config';
 
 function GetOrder() {
   const [pedidos, setPedidos] = useState([]);
@@ -15,6 +17,17 @@ function GetOrder() {
     })
   }, []);
 
+  // const remove= ()=>{
+  //   const id = event.target.dataset.id;
+  //   firestore.collection('pedidos').doc(id).delete();
+  // }
+  const finishOrder = (order) => {
+    firestore.collection("pedidosProntos").doc().set(order).then(() => {
+      alert("Pedido finalizado!");
+    });
+    const id = order.id;
+    firestore.collection('pedidos').doc(id).delete();
+  }
   return (
     <div className={css(styles.styleOrder)}>
       {pedidos.map((i, index) => {
@@ -27,10 +40,16 @@ function GetOrder() {
                   <p>Mesa: {i.mesaCliente}</p>
                 </div>
                 <div>
-                  <p>Pedidos:<br/>{i.produtos.map((i) => i.Item).join(',  ')}</p>
+                  <p>Pedidos:<br />{i.produtos.map((i) => i.Item).join(',  ')}</p>
                 </div>
                 <div>
                   <p>Horário do Pedido:{i.time}</p>
+                </div>
+                <div>
+                  <Button className='btnPedidos' text='Pedido pronto!' handleClick={(event) => {
+                event.preventDefault();
+                finishOrder(i);
+              }}/>
                 </div>
               </section>
             </main>

@@ -19,9 +19,13 @@ const styles = StyleSheet.create({
         display:'flex',
         width: '10rem',
         height: '5rem',
-        display: 'flex',
-        alignitems: 'center',
+        alignItems: 'center',
         justifycontent: 'space-around',
+        margin:'1%', 
+        backgroundColor:'#F25C05',
+        borderRadius: '10%',
+        justifyContent: 'inherit',
+        color:'#223459'
     },
     marginMenu:{
         margin:'1%',

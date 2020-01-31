@@ -3,18 +3,19 @@
   padding : 0 ;
 }
 #root {
-  background-color: #400101;
+  background-color: #F28705;
 }
 a{
-  color:#75542C;
+  color:#6503A6;
   text-decoration: none;
-  font-family: 'Ibarra Real Nova', serif;
+  font-family: 'Bowlby One SC', cursive;;
 }
 .menu{
-  font-family: 'Ibarra Real Nova', serif;
-  color: #731702;
-  margin:5%;
-  align-items: center;
+  font-family: 'Bowlby One SC', cursive;;
+  color:#F28705;
+  margin:7%;
+  justify-content: center;
+  display: flex;
 }
 .btnBreakAllDay{
   font-family: 'Indie Flower', cursive;
@@ -27,20 +28,3 @@ a{
 	background: #84e;
 	box-shadow: 10px 10px 20px 0px rgba(0,0,0,.35);
 }
-
-/* @media (min-width: 768px) and (max-width: 1024px) {
-.principal{
-display: flex;
-} 
-} */
-/* @media only screen and (min-width: 401px) and (max-width: 1024px) {
-  .principal{
-    display: flex;
-  }
-  Menu{
-    flex-direction: column;
-  }
-  .btn-menu{
-    flex-flow: column-nowrap;
-  }
-} */

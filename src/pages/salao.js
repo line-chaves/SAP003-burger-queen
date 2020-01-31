@@ -90,14 +90,14 @@ function Restaurante() {
   return (
     <div className={css(styles.container)}>
       <header className={css(styles.logo)}>
-        <img className={css(styles.img)} src={require("../componentes/img/BurgerQueen.png")} />
+        <img className={css(styles.img)} alt='imagem do logo' src={require('../componentes/img/BurgerQueen.png')} />
       </header>
       <main>
-        <section>
+        <section className={css(styles.buttonBreakAllDay)}>
           <Button className={css(styles.btnBreakAllDay)} class='btnBreakAllDay' text={'Café da Manhã'} handleClick={() => setFilterMenu('breakfast')} />
           <Button className={css(styles.btnBreakAllDay)} text={'Lanches'} handleClick={() => setFilterMenu('lunch')} />
-          <h2 className="menu">Menu</h2>
         </section>
+        <h2 className="menu">Menu</h2>
         <section className={css(styles.menu)}>
           <Menu
             menuItens={filterMenu === "breakfast" ? item1 : item2}
@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'space-around',
     alignItems: 'center',
-    backgroundColor: '#ffffff',
+    backgroundColor: '#FFFFFF',
   },
   menu: {
     display: 'flex',
@@ -156,7 +156,8 @@ const styles = StyleSheet.create({
     flexdirection: 'row',
     justifycontent: 'space-between',
     backgroundColor: 'inherit',
-    margin: '2%'
+    margin: '2%',
+    justifyContent: 'space-between'
   },
   logo: {
     justifyContent: 'center',
@@ -165,15 +166,24 @@ const styles = StyleSheet.create({
     display: 'flex'
   },
   img: {
-    width: '30%',
+    width: '25%',
   },
   btnBreakAllDay: {
-    borderRadius: '50%',
+    borderRadius: '10%',
     fontSize: '15px',
-    width: '50%',
+    width: '27%',
     height: '50px',
-    backgroundColor: '#75542C',
-    color: '#1F0C17'
+    backgroundColor: 'white',
+    color: '#0D0D0D',
+    border: '3px ridge #9305F2',
+    alignItems:'center',
+    display:'flex',
+    margin:'1%'
+  },
+  buttonBreakAllDay:{
+    display:'flex',
+    margin:'-2%',
+    justifyContent:'center'
   },
   btnItemSelect:{
     width:'28px',
